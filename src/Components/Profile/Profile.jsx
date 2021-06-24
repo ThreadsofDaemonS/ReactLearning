@@ -1,18 +1,17 @@
 import React from "react";
 import MyPosts from "./MyPosts/MyPosts";
 import s from "./Profile.module.css";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 const Profile = () => {
+  let posts = [
+    { id: 1, message: "Hey, how are you?", likesCount: 12 },
+    { id: 2, message: "It's, my first post", likesCount: 15 },
+  ];
   return (
     <div>
-      <div>
-        <img
-          className={s.img_content}
-          src="https://bipbap.ru/wp-content/uploads/2017/08/16.jpg"
-        />
-      </div>
-      <div>ava + description</div>
-      <MyPosts />
+      <ProfileInfo />
+      <MyPosts posts={posts} />
     </div>
   );
 };

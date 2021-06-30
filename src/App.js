@@ -10,33 +10,35 @@ import Settings from "./Components/Settings/Settings";
 
 const App = (props) => {
   return (
-    <BrowserRouter>
-      <div className="app-wrapper">
-        <Header />
-        <Navbar />
-        <div className="app-wrapper-content">
-          {/* <Route path="/dialogs" component={Dialogs} />
-          <Route path="/profile" component={Profile} /> */}
-          {/* <Route path="/news" component={News} />
-          <Route path="/music" component={Music} />
-          <Route path="/settings" component={Settings} /> */}
-
-          <Route
-            path="/dialogs"
-            render={() => (
-              <Dialogs dialogs={props.dialogs} messages={props.messages} />
-            )}
-          />
-          <Route
-            path="/profile"
-            render={() => <Profile posts={props.posts} />}
-          />
-          <Route path="/news" render={() => <News />} />
-          <Route path="/music" component={() => <Music />} />
-          <Route path="/settings" component={() => <Settings />} />
-        </div>
+    <div className="app-wrapper">
+      <Header />
+      <Navbar state={props.state.sidebar} />
+      <div className="app-wrapper-content">
+        <Route
+          path="/dialogs"
+          render={() => (
+            <Dialogs
+              state={props.state.dialogsPage}
+              addMessage={props.addMessage}
+              updateNewMessageText={props.updateNewMessageText}
+            />
+          )}
+        />
+        <Route
+          path="/profile"
+          render={() => (
+            <Profile
+              profilePage={props.state.profilePage}
+              addPost={props.addPost}
+              updateNewPostText={props.updateNewPostText}
+            />
+          )}
+        />
+        <Route path="/news" render={() => <News />} />
+        <Route path="/music" component={() => <Music />} />
+        <Route path="/settings" component={() => <Settings />} />
       </div>
-    </BrowserRouter>
+    </div>
   );
 };
 

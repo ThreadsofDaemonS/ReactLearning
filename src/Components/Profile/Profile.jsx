@@ -4,14 +4,15 @@ import s from "./Profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 const Profile = (props) => {
-  // let posts = [
-  //   { id: 1, message: "Hey, how are you?", likesCount: 12 },
-  //   { id: 2, message: "It's, my first post", likesCount: 15 },
-  // ];
   return (
     <div>
       <ProfileInfo />
-      <MyPosts posts={props.posts} />
+      <MyPosts
+        posts={props.profilePage.posts}
+        newPostText={props.profilePage.newPostText}
+        updateNewPostText={props.updateNewPostText}
+        addPost={props.addPost}
+      />
     </div>
   );
 };

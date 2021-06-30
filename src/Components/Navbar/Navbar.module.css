@@ -12,3 +12,24 @@
 .item a.activeLink {
   color: gold;
 }
+
+.itemSettings {
+  color: white;
+  text-decoration: none;
+  margin-top: 20px;
+}
+
+.itemFriends {
+  font-size: 30px;
+  margin-top: 20px;
+}
+.itemFriend {
+  display: inline;
+  margin: 2px;
+}
+.itemFriend img {
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  border-radius: 30px;
+}

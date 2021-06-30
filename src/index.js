@@ -3,35 +3,31 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import store from "./redux/state";
+import { BrowserRouter } from "react-router-dom";
 
-let dialogs = [
-  { id: 1, name: "Dimych" },
-  { id: 2, name: "Andrew" },
-  { id: 3, name: "Sveta" },
-  { id: 4, name: "Sasha" },
-  { id: 5, name: "Viktor" },
-  { id: 6, name: "Valera" },
-];
+//addPost("SamuraiJS.com");
 
-let messages = [
-  { id: 1, message: "Hi" },
-  { id: 2, message: "How is your it-kamasutra?" },
-  { id: 3, message: "Yo" },
-  { id: 4, message: "Yo" },
-  { id: 5, message: "Yo" },
-];
+let rerenderEntireTree = (state) => {
+  ReactDOM.render(
+    <React.StrictMode>
+      <BrowserRouter>
+        <App
+          state={state}
+          addPost={store.addPost.bind(store)}
+          updateNewPostText={store.updateNewPostText.bind(store)}
+          addMessage={store.addMessage.bind(store)}
+          updateNewMessageText={store.updateNewMessageText.bind(store)}
+        />
+      </BrowserRouter>
+    </React.StrictMode>,
+    document.getElementById("root")
+  );
+};
 
-let posts = [
-  { id: 1, message: "Hey, how are you?", likesCount: 12 },
-  { id: 2, message: "It's, my first post", likesCount: 15 },
-];
+rerenderEntireTree(store.getState());
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App dialogs={dialogs} messages={messages} posts={posts} />
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+store.subscribe(rerenderEntireTree);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

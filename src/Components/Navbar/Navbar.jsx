@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import s from "./Navbar.module.css";
 
-const Navbar = () => {
+const Navbar = (props) => {
   return (
     <nav className={s.nav}>
       <div className={s.item}>
@@ -25,10 +25,19 @@ const Navbar = () => {
           Music
         </NavLink>
       </div>
-      <div className={s.item}>
+      <div className={s.itemSettings}>
         <NavLink to="/settings" activeClassName={s.activeLink}>
           Settings
         </NavLink>
+      </div>
+      <div className={s.itemFriends}>Friends</div>
+      <div>
+        {props.state.friends.map((friend) => (
+          <div className={s.itemFriend}>
+            <img src="https://i.pinimg.com/564x/a3/b1/74/a3b174ae748c6c71a528e476b561df00.jpg" />{" "}
+            {friend.name}
+          </div>
+        ))}
       </div>
     </nav>
   );

@@ -9,23 +9,27 @@ import {
 } from "../../redux/dialogs-reducer";
 
 const Dialogs = (props) => {
-  let dialogsElements = props.state.dialogs.map((d) => (
+  let state = props.dialogsPage;
+
+  let dialogsElements = state.dialogs.map((d) => (
     <DialogsItem name={d.name} id={d.id} />
   ));
 
-  let messagesElements = props.state.messages.map((m) => (
+  let messagesElements = state.messages.map((m) => (
     <Message message={m.message} />
   ));
 
   // let newMessageElement = React.createRef();
 
   let addMessage = () => {
-    props.dispatch(addMessageActionCreater());
+    // props.dispatch(addMessageActionCreater());
+    props.addMessage();
   };
 
   let onMessageChange = (e) => {
     let text = e.target.value;
-    props.dispatch(updateNewMessageTextActionCreator(text));
+    props.updateNewMessageText(text);
+    // props.dispatch(updateNewMessageTextActionCreator(text));
   };
 
   return (

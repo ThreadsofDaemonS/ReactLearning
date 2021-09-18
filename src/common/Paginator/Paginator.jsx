@@ -48,7 +48,6 @@ let Paginator = ({
               )}
               key={p}
               onClick={(e) => {
-                debugger;
                 onPageChanged(p);
               }}
             >
